@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taz-library</title>
+    <script src="https://kit.fontawesome.com/e8fa2e31b4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
+            font-size: 18px;
+        }
+
+      
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222; /* Updated navbar background color */
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white; /* Updated logo text color */
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white; /* Updated link color */
+            font-size: 18px;
+        }
+
+        .navbar ul li a:hover {
+            color: orangered; /* Hover color for links */
+        }
+
+        .header {
+            height: 200px;
+            border-radius: 3px;
+            background: url(images/ai-generated-8706226_1280.png) no-repeat;
+            background-size: cover;
+            background-position: center;
+            /* margin: 3vh 0px; */
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header h1 {
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar {
+            width: 100%;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            padding: 15px;
+            height: 130px;
+            box-shadow: 0px 0px 3px gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .fa-circle {
+            color: orangered;
+        }
+
+        .sidebody {
+    /* height: 0; */
+    /* text-align: center; */
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+}
+        .searchBar {
+            width: 30%;
+            background-color: #eee;
+            border-radius: 3px;
+            padding: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            background: none;
+        }
+
+        .glass:hover {
+            color: orangered;
+            cursor: pointer;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .fa-brands {
+            font-size: 25px;
+            margin: 0 10px;
+            color: #ddd; 
+            cursor: pointer;
+        }
+
+        .fa-brands:hover {
+            color: orangered; 
+        }
+
+        .data {
+            width: 100%;
+            border-radius: 3px;
+            height: 92vh;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .top {
+            height: 60px;
+            border-radius: 3px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+        }
+
+        #root {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        .box {
+            margin: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .img-box {
+            width: 100%;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .images {
+            max-height: 90%;
+            max-width: 90%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .bottom {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 110px;
+        }
+
+        h2 {
+            font-size: 20px;
+            color: orangered;
+        }
+
+        button {
+            width: 100%;
+            position: relative;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            padding: 7px 25px;
+            cursor: pointer;
+            color: white;
+        }
+
+        button:hover {
+            background-color: orangered;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #222; /* Updated footer background color */
+            padding: 20px 0;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer .social-icons {
+            margin-top: 10px;
+        }
+
+        .footer .social-icons i {
+            margin: 0 10px;
+            color: #ddd; /* Updated social icon color in footer */
+        }
+
+        .footer .social-icons i:hover {
+            color: orangered; /* Hover color for social icons in footer */
+        }
+
+        .footer p {
+            margin-top: 10px;
+        }
+        .body {
+    margin: 30px;
+}
+
+        /* Responsive Design Example */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .navbar ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Section -->
+    <nav class="navbar">
+        <div class="logo">
+            BookSpot
+        </div>
+        <div class="social-icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-linkedin"></i>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <div class="header">
+        <h1>"Books That Inspire, Stories That Matter: Find Your Next Adventure"</h1>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="sidebody" >
+                <div class="searchBar">
+                    <input placeholder="Search..." id="searchBar" name="searchBar" type="text">
+                    <i class="fa-solid fa-magnifying-glass glass" id="btn"></i>
+                </div>
+            </div>
+        </div>
+        <div class="data">
+            <div class="body">
+                <div id="root"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div>
+            <p>&copy; 2024 BookSpot. All Rights Reserved.</p>
+           
+    
+        </div>
+    </footer>
+
+    <script>
+        const product = [
+            {
+                id: 0,
+                image: 'images/image_2024_09_10T06_17_51_313Z.png',
+                title: 'The Great Gatsby',
+                link: 'https://en.wikipedia.org/wiki/The_Great_Gatsby'
+            },
+            {
+                id: 1,
+                image: 'images/image_2024_09_10T06_17_12_915Z.png',
+                title: '1984 by George Orwell',
+                link: 'https://en.wikipedia.org/wiki/Nineteen_Eighty-Four'
+            },
+            {
+                id: 2,
+                image: 'images/image_2024_09_10T06_18_43_326Z.png',
+                title: 'To Kill a Mockingbird',
+                link: 'https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird'
+            },
+            {
+                id: 3,
+                image: 'images/image_2024_09_10T06_19_45_378Z.png',
+                title: 'Pride and Prejudice',
+                link: 'https://en.wikipedia.org/wiki/Pride_and_Prejudice'
+            },
+            {
+                id: 4,
+                image: 'images/image_2024_09_10T06_20_55_558Z.png',
+                title: 'The Catcher in the Rye',
+                link: 'https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye'
+            },
+            {
+                id: 5,
+                image: 'images/image_2024_09_10T06_22_22_408Z.png',
+                title: 'Moby Dick',
+                link: 'https://en.wikipedia.org/wiki/Moby-Dick'
+            },
+        ];
+
+        const categories = [...new Set(product.map((item) => { return item }))]
+
+        document.getElementById('searchBar').addEventListener('keyup', (e) => {
+            const searchData = e.target.value.toLowerCase();
+            const filteredData = categories.filter((item) => {
+                return (
+                    item.title.toLowerCase().includes(searchData)
+                )
+            })
+            displayItem(filteredData)
+        });
+
+        const displayItem = (items) => {
+            document.getElementById('root').innerHTML = items.map((item) => {
+                var { image, title, link } = item;
+                return (
+                    `<div class='box'>
+                        <div class='img-box'>
+                            <img class='images' src=${image}></img>
+                        </div> 
+                        <div class='bottom'>
+                            <p>${title}</p>
+                            <a href=${link} target="_blank">
+                                <button>Read Now</button>
+                            </a>
+                        </div>
+                    </div>`
+                )
+            }).join('')
+        };
+        displayItem(categories);
+    </script>
+</body>
+
+</html>
