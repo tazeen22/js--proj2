@@ -16,21 +16,23 @@
             font-size: 18px;
         }
 
-      
-
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #222; /* Updated navbar background color */
+            background-color: #222; 
             padding: 10px 20px;
             color: white;
+            cursor: pointer;
+        }
+      .navbar:hover {
+            background-color: rgb(97, 96, 95);
         }
 
         .navbar .logo {
             font-size: 24px;
             font-weight: bold;
-            color: white; /* Updated logo text color */
+            color: white; 
         }
 
         .navbar ul {
@@ -45,12 +47,12 @@
 
         .navbar ul li a {
             text-decoration: none;
-            color: white; /* Updated link color */
+            color: white; 
             font-size: 18px;
         }
 
         .navbar ul li a:hover {
-            color: orangered; /* Hover color for links */
+            color: orangered;
         }
 
         .header {
@@ -59,7 +61,6 @@
             background: url(images/ai-generated-8706226_1280.png) no-repeat;
             background-size: cover;
             background-position: center;
-            /* margin: 3vh 0px; */
             padding: 15px;
             display: flex;
             align-items: center;
@@ -97,12 +98,10 @@
         }
 
         .sidebody {
-    /* height: 0; */
-    /* text-align: center; */
-    display: flex;
-    /* align-items: center; */
-    justify-content: center;
-}
+            display: flex;
+            justify-content: center;
+        }
+
         .searchBar {
             width: 30%;
             background-color: #eee;
@@ -252,11 +251,27 @@
         .footer p {
             margin-top: 10px;
         }
-        .body {
-    margin: 30px;
-}
 
-        /* Responsive Design Example */
+        .body {
+            margin: 30px;
+        }
+
+        /* Toggle Button */
+        #toggle-btn {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: orangered;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #toggle-btn:hover {
+            background-color: darkorange;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             .navbar {
                 flex-direction: column;
@@ -282,8 +297,10 @@
 
 <body>
 
+
+
     <!-- Navbar Section -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="logo">
             BookSpot
         </div>
@@ -296,13 +313,13 @@
     </nav>
 
     <!-- Header Section -->
-    <div class="header">
+    <div class="header" id="header">
         <h1>"Books That Inspire, Stories That Matter: Find Your Next Adventure"</h1>
     </div>
 
     <div class="container">
         <div class="sidebar">
-            <div class="sidebody" >
+            <div class="sidebody">
                 <div class="searchBar">
                     <input placeholder="Search..." id="searchBar" name="searchBar" type="text">
                     <i class="fa-solid fa-magnifying-glass glass" id="btn"></i>
@@ -320,83 +337,43 @@
     <footer class="footer">
         <div>
             <p>&copy; 2024 BookSpot. All Rights Reserved.</p>
-           
-    
         </div>
     </footer>
 
     <script>
         const product = [
-            {
-                id: 0,
-                image: 'images/image_2024_09_10T06_17_51_313Z.png',
-                title: 'The Great Gatsby',
-                link: 'https://en.wikipedia.org/wiki/The_Great_Gatsby'
-            },
-            {
-                id: 1,
-                image: 'images/image_2024_09_10T06_17_12_915Z.png',
-                title: '1984 by George Orwell',
-                link: 'https://en.wikipedia.org/wiki/Nineteen_Eighty-Four'
-            },
-            {
-                id: 2,
-                image: 'images/image_2024_09_10T06_18_43_326Z.png',
-                title: 'To Kill a Mockingbird',
-                link: 'https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird'
-            },
-            {
-                id: 3,
-                image: 'images/image_2024_09_10T06_19_45_378Z.png',
-                title: 'Pride and Prejudice',
-                link: 'https://en.wikipedia.org/wiki/Pride_and_Prejudice'
-            },
-            {
-                id: 4,
-                image: 'images/image_2024_09_10T06_20_55_558Z.png',
-                title: 'The Catcher in the Rye',
-                link: 'https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye'
-            },
-            {
-                id: 5,
-                image: 'images/image_2024_09_10T06_22_22_408Z.png',
-                title: 'Moby Dick',
-                link: 'https://en.wikipedia.org/wiki/Moby-Dick'
-            },
+            { id: 0, image: 'images/image_2024_09_10T06_17_51_313Z.png', title: 'The Great Gatsby', link: 'https://en.wikipedia.org/wiki/The_Great_Gatsby' },
+            { id: 1, image: 'images/image_2024_09_10T06_17_12_915Z.png', title: '1984 by George Orwell', link: 'https://en.wikipedia.org/wiki/Nineteen_Eighty-Four' },
+            { id: 2, image: 'images/image_2024_09_10T06_18_43_326Z.png', title: 'To Kill a Mockingbird', link: 'https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird' },
+            { id: 3, image: 'images/image_2024_09_10T06_20_55_558Z.png', title: 'The Catcher in the Rye', link: 'https://en.wikipedia.org/wiki/The_Catcher_in_the_Rye' },
+            { id: 4, image: 'images/image_2024_09_10T06_19_45_378Z.png', title: 'Pride and Prejudice', link: 'https://en.wikipedia.org/wiki/Pride_and_Prejudice' },
+            { id: 5, image: 'images/TheHobbit_FirstEdition.jpg', title: 'The Hobbit', link: 'https://en.wikipedia.org/wiki/The_Hobbit' }
         ];
 
-        const categories = [...new Set(product.map((item) => { return item }))]
+        const categories = [...new Set(product.map(item => item))];
+        document.getElementById('root').innerHTML = categories.map((item) =>
+            `<div class='box'>
+                <div class='img-box'>
+                    <img class='images' src=${item.image} alt='Book Image'>
+                </div>
+                <div class='bottom'>
+                    <h2>${item.title}</h2>
+                    <button onclick='window.open("${item.link}")'>View Details</button>
+                </div>
+            </div>`
+        ).join('');
+        const navbar = document.getElementById('navbar');
+        const header = document.getElementById('header');
 
-        document.getElementById('searchBar').addEventListener('keyup', (e) => {
-            const searchData = e.target.value.toLowerCase();
-            const filteredData = categories.filter((item) => {
-                return (
-                    item.title.toLowerCase().includes(searchData)
-                )
-            })
-            displayItem(filteredData)
+        navbar.addEventListener('click', () => {
+            if (header.style.display === 'none') {
+                header.style.display = 'flex';
+            } else {
+                header.style.display = 'none';
+            }
         });
-
-        const displayItem = (items) => {
-            document.getElementById('root').innerHTML = items.map((item) => {
-                var { image, title, link } = item;
-                return (
-                    `<div class='box'>
-                        <div class='img-box'>
-                            <img class='images' src=${image}></img>
-                        </div> 
-                        <div class='bottom'>
-                            <p>${title}</p>
-                            <a href=${link} target="_blank">
-                                <button>Read Now</button>
-                            </a>
-                        </div>
-                    </div>`
-                )
-            }).join('')
-        };
-        displayItem(categories);
     </script>
+
 </body>
 
 </html>
